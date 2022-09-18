@@ -49,4 +49,13 @@ function includes(param : any) : ConditionFunction {
     }
 }
 
+export {
+    patternMatch,
+    when,
+    otherWise,
+    allOf,
+    anyOf,
+    includes
+}
+
 
