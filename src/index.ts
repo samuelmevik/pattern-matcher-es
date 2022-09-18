@@ -9,6 +9,15 @@ function patternMatch(param: any) {
     }
 }
 
+function checkCondition(condition: Condition, param: any) : boolean {
+    if (isObject<ConditionObject>(condition)) {
+        return keys(condition).every(key => checkCondition(condition[key], param[key]))
+    }
+    else if (isFunction<ConditionFunction>(condition)) {
+        return condition(param)
+    }
+    return false
+}
 
 
 function when (condition: Condition, callback: Function) {
