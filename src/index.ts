@@ -31,5 +31,22 @@ function otherWise (callback: Function) {
     return when(() => true, callback)
 }
 
+function allOf(...conditions : Condition[]) : ConditionFunction {
+    return function (args : any) {
+        return isArray(args) && conditions.every(condition => args.every(arg => checkCondition(condition, arg)))
+    }
+}
+
+function anyOf(...conditions : Condition[]) : ConditionFunction {
+    return function (args : any) {
+        return isArray(args) && conditions.some(condition => args.some(arg => checkCondition(condition, arg)))
+    }
+}
+
+function includes(param : any) : ConditionFunction {
+    return function (args: any) {
+        return isArray(args) && args.includes(param)
+    }
+}
 
 
