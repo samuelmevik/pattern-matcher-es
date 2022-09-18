@@ -1,4 +1,4 @@
-import { is, isArray, isFunction, isObject, isString } from './guards.js'
+import { isArray, isFunction, isObject } from './guards.js'
 import { Cases, Condition, ConditionFunction, ConditionObject } from './typings'
 
 const { keys } = Object
