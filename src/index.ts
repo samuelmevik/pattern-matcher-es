@@ -27,4 +27,9 @@ function when (condition: Condition, callback: Function) {
     })
 }
 
+function otherWise (callback: Function) {
+    return when(() => true, callback)
+}
+
+
 
