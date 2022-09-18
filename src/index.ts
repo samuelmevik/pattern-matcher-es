@@ -4,8 +4,9 @@ import { Cases, Condition, ConditionFunction, ConditionObject } from './typings'
 const { keys } = Object
 
 /**
+ * Checks if param matches with a pre defined pattern.
  *
- * @param param
+ * @param param Accepts nested objects, arrays, numbers and strings.
  */
 function patternMatch (param: any) {
   return function (...cases: Cases[]) {
@@ -14,9 +15,10 @@ function patternMatch (param: any) {
 }
 
 /**
+ * Validates a condition.
  *
- * @param condition
- * @param param
+ * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param param Accepts nested objects, arrays, numbers and strings.
  */
 function checkCondition (condition: Condition, param: any) : boolean {
   if (isObject<ConditionObject>(condition)) {
@@ -28,9 +30,10 @@ function checkCondition (condition: Condition, param: any) : boolean {
 }
 
 /**
+ * Checks condition.
  *
- * @param condition
- * @param callback
+ * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param callback The callback function runs if the condition is true.
  */
 function when (condition: Condition, callback: Function) {
   return ({
@@ -40,14 +43,16 @@ function when (condition: Condition, callback: Function) {
 }
 
 /**
+ * If no condition is met this is a fallback.
  *
- * @param callback
+ * @param callback Callback runs if there is no true case.
  */
 function otherWise (callback: Function) {
   return when(() => true, callback)
 }
 
 /**
+ * Checks if all the values in the array matches the condition.
  *
  * @param {...any} conditions
  */
@@ -58,6 +63,7 @@ function allOf (...conditions : Condition[]) : ConditionFunction {
 }
 
 /**
+ * Checks if any of the values in the array matches the condition.
  *
  * @param {...any} conditions
  */
@@ -68,6 +74,7 @@ function anyOf (...conditions : Condition[]) : ConditionFunction {
 }
 
 /**
+ * Checks if the array includes a param.
  *
  * @param param
  */
