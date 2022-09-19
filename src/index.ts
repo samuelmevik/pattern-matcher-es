@@ -1,5 +1,5 @@
 import { isArray, isFunction, isObject } from './guards.js'
-import { Cases, Condition, ConditionFunction, ConditionObject } from './typings'
+import { Cases, Condition, ConditionFunction, ConditionObject } from './typings.js'
 
 const { keys } = Object
 
@@ -54,7 +54,7 @@ function otherWise (callback: Function) {
 /**
  * Checks if all the values in the array matches the condition.
  *
- * @param {...any} conditions
+ * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
  */
 function allOf (...conditions : Condition[]) : ConditionFunction {
   return function (args : any) {
@@ -65,7 +65,7 @@ function allOf (...conditions : Condition[]) : ConditionFunction {
 /**
  * Checks if any of the values in the array matches the condition.
  *
- * @param {...any} conditions
+ * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
  */
 function anyOf (...conditions : Condition[]) : ConditionFunction {
   return function (args : any) {
@@ -76,7 +76,7 @@ function anyOf (...conditions : Condition[]) : ConditionFunction {
 /**
  * Checks if the array includes a param.
  *
- * @param param
+ * @param param Can be anything.
  */
 function includes (param : any) : ConditionFunction {
   return function (args: any) {
