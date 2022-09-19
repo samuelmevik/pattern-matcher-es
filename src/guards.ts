@@ -168,12 +168,12 @@ export {
   isTruthy,
   isUndefined,
   inRange,
-  isRegexp as isDate,
+  isRegexp,
   isFiniteNumber,
   instanceOf,
   isNull,
   isObject,
   isFunction,
   isArray,
-  is,
+  is
 }
