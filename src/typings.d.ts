@@ -5,4 +5,6 @@ export type ConditionObject = { [key: string]: ConditionFunction | ConditionObje
 
 export type Condition = ConditionFunction | ConditionObject
 
-export type Cases = ({ condition: Condition, callback: Function })
+export type anyFunction = <T>(...arg: any) => T
+
+export type Cases = ({ condition: Condition, callback: anyFunction })

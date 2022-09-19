@@ -1,5 +1,5 @@
 import { isArray, isFunction, isObject } from './guards.js'
-import { Cases, Condition, ConditionFunction, ConditionObject } from './typings.js'
+import { anyFunction, Cases, Condition, ConditionFunction, ConditionObject } from './typings.js'
 
 const { keys } = Object
 
@@ -35,7 +35,7 @@ function checkCondition (condition: Condition, param: any) : boolean {
  * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
  * @param callback The callback function runs if the condition is true.
  */
-function when (condition: Condition, callback: Function) {
+function when (condition: Condition, callback: anyFunction) {
   return ({
     condition,
     callback
@@ -47,7 +47,7 @@ function when (condition: Condition, callback: Function) {
  *
  * @param callback Callback runs if there is no true case.
  */
-function otherWise (callback: Function) {
+function otherWise (callback: anyFunction) {
   return when(() => true, callback)
 }
 
