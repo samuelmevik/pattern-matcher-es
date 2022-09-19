@@ -156,5 +156,5 @@ export {
   isObject,
   isFunction,
   isArray,
-  is
+  is,
 }
