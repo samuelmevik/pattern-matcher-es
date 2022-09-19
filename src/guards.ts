@@ -5,8 +5,8 @@ import { Constructor } from './typings'
  *
  * @param type Should be a to string literal.
  */
-function typeOf<Type> (type : string) {
-  return function (param : Type) : param is Type {
+function typeOf<Type>(type: string) {
+  return function (param: Type): param is Type {
     // eslint-disable-next-line valid-typeof
     return typeof param === type
   }
@@ -17,8 +17,8 @@ function typeOf<Type> (type : string) {
  *
  * @param type The constructor of a class.
  */
-function instanceOf<Type> (type : Constructor<Type>) {
-  return function (param : any) : param is Type {
+function instanceOf<Type>(type: Constructor<Type>) {
+  return function (param: any): param is Type {
     return param instanceof type
   }
 }
@@ -28,7 +28,7 @@ function instanceOf<Type> (type : Constructor<Type>) {
  *
  * @param param The unknown value.
  */
-function isTruthy (param : any) {
+function isTruthy(param: any) {
   return Boolean(param)
 }
 
@@ -37,7 +37,7 @@ function isTruthy (param : any) {
  *
  * @param param The unknown value.
  */
-function isFalsy (param : any) {
+function isFalsy(param: any) {
   return !isTruthy(param)
 }
 
@@ -46,7 +46,7 @@ function isFalsy (param : any) {
  *
  * @param param The unknown value.
  */
-function isNumber (param : any) : param is number {
+function isNumber(param: any): param is number {
   return typeOf<number>('number')(param) && !isNaN(param)
 }
 
@@ -55,7 +55,7 @@ function isNumber (param : any) : param is number {
  *
  * @param param The unknown value.
  */
-function isString (param : any) : param is string {
+function isString(param: any): param is string {
   return typeOf('string')(param)
 }
 
@@ -64,7 +64,7 @@ function isString (param : any) : param is string {
  *
  * @param param The unkown value.
  */
-function isBoolean (param : any) : param is boolean {
+function isBoolean(param: any): param is boolean {
   return typeOf('boolean')(param)
 }
 
@@ -73,7 +73,7 @@ function isBoolean (param : any) : param is boolean {
  *
  * @param param The unknown value.
  */
-function isUndefined (param : any) : param is undefined {
+function isUndefined(param: any): param is undefined {
   return typeOf('undefined')(param)
 }
 
@@ -82,7 +82,7 @@ function isUndefined (param : any) : param is undefined {
  *
  * @param param The unknown value.
  */
-function isDefined (param : any) : param is any {
+function isDefined(param: any): param is any {
   return isFalsy(isUndefined(param))
 }
 
@@ -91,7 +91,7 @@ function isDefined (param : any) : param is any {
  *
  * @param param The unkownn value.
  */
-function isNull (param : any) : param is null {
+function isNull(param: any): param is null {
   return param === null
 }
 
@@ -101,7 +101,7 @@ function isNull (param : any) : param is null {
  * @param x The first value in the range.
  * @param y The second value in the range.
  */
-function inRange (x : number, y : number) {
+function inRange(x: number, y: number) {
   return function (params: any) {
     return isNumber(params) && (params >= Math.min(x, y) && params <= Math.max(x, y))
   }
@@ -112,7 +112,7 @@ function inRange (x : number, y : number) {
  *
  * @param param The unknown value.
  */
-function isFiniteNumber (param : any) : param is number {
+function isFiniteNumber(param: any): param is number {
   return isNumber(param) && !isNaN(param) && isFinite(param)
 }
 
@@ -121,8 +121,17 @@ function isFiniteNumber (param : any) : param is number {
  *
  * @param param The unknown value.
  */
-function isRegexp<Type extends RegExp> (param : any) : param is Type {
+function isRegexp<Type extends RegExp>(param: any): param is Type {
   return instanceOf(RegExp)(param)
+}
+
+/**
+ * Checks if the input is an instance of the Date class.
+ *
+ * @param param The unknown value.
+ */
+function isDate<Type extends Date>(param: any): param is Type {
+  return instanceOf(Date)(param)
 }
 
 /**
@@ -131,7 +140,7 @@ function isRegexp<Type extends RegExp> (param : any) : param is Type {
  * @param param The unknown value.
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-function isObject<Type extends Object> (param : any) : param is Type {
+function isObject<Type extends Object>(param: any): param is Type {
   return isFalsy(isNull(param)) && typeOf('object')(param) && isFalsy(instanceOf(Array)(param))
 }
 
@@ -141,7 +150,7 @@ function isObject<Type extends Object> (param : any) : param is Type {
  * @param param The unknown value.
  */
 // eslint-disable-next-line @typescript-eslint/ban-types
-function isFunction<Type extends Function> (param : any) : param is Type {
+function isFunction<Type extends Function>(param: any): param is Type {
   return typeOf('function')(param)
 }
 
@@ -150,7 +159,7 @@ function isFunction<Type extends Function> (param : any) : param is Type {
  *
  * @param param The first parameter.
  */
-function is (param : any) {
+function is(param: any) {
   return function (params: number | string) {
     return param === params
   }
@@ -175,5 +184,6 @@ export {
   isObject,
   isFunction,
   isArray,
+  isDate,
   is
 }
