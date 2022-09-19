@@ -117,10 +117,11 @@ function isFiniteNumber (param : any) : param is number {
 }
 
 /**
+ * Checks if the input is an instance of the RegExp class.
  *
- * @param param
+ * @param param The unknown value.
  */
-function isDate<Type extends RegExp> (param : any) : param is Type {
+function isRegexp<Type extends RegExp> (param : any) : param is Type {
   return instanceOf(RegExp)(param)
 }
 
@@ -167,7 +168,7 @@ export {
   isTruthy,
   isUndefined,
   inRange,
-  isDate,
+  isRegexp as isDate,
   isFiniteNumber,
   instanceOf,
   isNull,
