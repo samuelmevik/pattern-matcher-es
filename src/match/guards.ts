@@ -1,4 +1,4 @@
-import { Constructor } from './typings'
+import { Constructor } from '../typings'
 
 /**
  * Checks the type of the operand's value is equals to param's.

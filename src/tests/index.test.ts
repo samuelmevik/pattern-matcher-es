@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { typeOf } from '../guards.js'
+import { typeOf } from '../match/guards.js'
 
 try {
   assert(typeOf('number')('la'), 'lalal')
