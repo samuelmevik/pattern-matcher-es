@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "lint": "npx eslint ./src || exit 0",
-    "lint:fix": "npx eslint ./src --fix || exit 0"
+    "lint:fix": "npx eslint ./src --fix || exit 0",
+    "test": "ts-node-esm src/tests/index.test.ts"
   },
   "repository": {
     "type": "git",
@@ -41,8 +42,8 @@
       "@typescript-eslint/no-explicit-any": 0,
       "jsdoc/require-param-type": 0,
       "jsdoc/require-returns-type": 0,
-      "jsdoc/require-returns" : 0,
-      "no-unused-vars" : 0
+      "jsdoc/require-returns": 0,
+      "no-unused-vars": 0
     }
   },
   "keywords": [],
