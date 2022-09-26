@@ -17,7 +17,7 @@ function patternMatch (param: any) {
 /**
  * Validates a condition.
  *
- * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  * @param param Accepts nested objects, arrays, numbers and strings.
  */
 function checkCondition (condition: Condition, param: any) : boolean {
@@ -32,7 +32,7 @@ function checkCondition (condition: Condition, param: any) : boolean {
 /**
  * Checks condition.
  *
- * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  * @param callback The callback function runs if the condition is true.
  */
 function when (condition: Condition, callback: anyFunction) {
@@ -54,7 +54,7 @@ function otherWise (callback: anyFunction) {
 /**
  * Checks if all the values in the array matches the condition.
  *
- * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
 function allOf (...conditions : Condition[]) : ConditionFunction {
   return function (args : any) {
@@ -65,7 +65,7 @@ function allOf (...conditions : Condition[]) : ConditionFunction {
 /**
  * Checks if any of the values in the array matches the condition.
  *
- * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
 function anyOf (...conditions : Condition[]) : ConditionFunction {
   return function (args : any) {

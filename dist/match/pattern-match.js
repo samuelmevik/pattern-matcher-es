@@ -13,7 +13,7 @@ function patternMatch(param) {
 /**
  * Validates a condition.
  *
- * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  * @param param Accepts nested objects, arrays, numbers and strings.
  */
 function checkCondition(condition, param) {
@@ -28,7 +28,7 @@ function checkCondition(condition, param) {
 /**
  * Checks condition.
  *
- * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  * @param callback The callback function runs if the condition is true.
  */
 function when(condition, callback) {
@@ -48,7 +48,7 @@ function otherWise(callback) {
 /**
  * Checks if all the values in the array matches the condition.
  *
- * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
 function allOf(...conditions) {
     return function (args) {
@@ -58,7 +58,7 @@ function allOf(...conditions) {
 /**
  * Checks if any of the values in the array matches the condition.
  *
- * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
 function anyOf(...conditions) {
     return function (args) {

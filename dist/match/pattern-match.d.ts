@@ -8,7 +8,7 @@ declare function patternMatch(param: any): (...cases: Cases[]) => any;
 /**
  * Checks condition.
  *
- * @param condition Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  * @param callback The callback function runs if the condition is true.
  */
 declare function when(condition: Condition, callback: anyFunction): {
@@ -27,13 +27,13 @@ declare function otherWise(callback: anyFunction): {
 /**
  * Checks if all the values in the array matches the condition.
  *
- * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
 declare function allOf(...conditions: Condition[]): ConditionFunction;
 /**
  * Checks if any of the values in the array matches the condition.
  *
- * @param {...any} conditions Needs to be a function or a object whoose end value is a function. The function needs to return a boolean.
+ * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
 declare function anyOf(...conditions: Condition[]): ConditionFunction;
 /**

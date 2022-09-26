@@ -24,7 +24,7 @@ function instanceOf<Type> (type: Constructor<Type>) {
 }
 
 /**
- * Turns a value into its boolean equivalant.
+ * Turns a value into its boolean equivalent.
  *
  * @param param The unknown value.
  */
@@ -33,7 +33,7 @@ function isTruthy (param: any) {
 }
 
 /**
- * Turns a value into its boolean equivalant and return true if it is false.
+ * Turns a value into its boolean equivalent and return true if it is false.
  *
  * @param param The unknown value.
  */
@@ -62,7 +62,7 @@ function isString (param: any): param is string {
 /**
  * Checks if the input is a boolean.
  *
- * @param param The unkown value.
+ * @param param The unknown value.
  */
 function isBoolean (param: any): param is boolean {
   return typeOf('boolean')(param)
@@ -89,14 +89,14 @@ function isDefined (param: any): param is any {
 /**
  * Checks if the input is null.
  *
- * @param param The unkownn value.
+ * @param param The unknown value.
  */
 function isNull (param: any): param is null {
   return param === null
 }
 
 /**
- * Checks if a value is inbetween parameter x and y. Order of x and y deosnt matter.
+ * Checks if a value is between parameter x and y. Order of x and y deosnt matter.
  *
  * @param x The first value in the range.
  * @param y The second value in the range.
@@ -155,7 +155,7 @@ function isFunction<Type extends Function> (param: any): param is Type {
 }
 
 /**
- * Checks if the first parameter is equivalant to the second.
+ * Checks if the first parameter is equivalent to the second.
  *
  * @param param The first parameter.
  */

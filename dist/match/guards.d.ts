@@ -12,13 +12,13 @@ declare function typeOf<Type>(type: string): (param: Type) => param is Type;
  */
 declare function instanceOf<Type>(type: Constructor<Type>): (param: any) => param is Type;
 /**
- * Turns a value into its boolean equivalant.
+ * Turns a value into its boolean equivalent.
  *
  * @param param The unknown value.
  */
 declare function isTruthy(param: any): boolean;
 /**
- * Turns a value into its boolean equivalant and return true if it is false.
+ * Turns a value into its boolean equivalent and return true if it is false.
  *
  * @param param The unknown value.
  */
@@ -38,7 +38,7 @@ declare function isString(param: any): param is string;
 /**
  * Checks if the input is a boolean.
  *
- * @param param The unkown value.
+ * @param param The unknown value.
  */
 declare function isBoolean(param: any): param is boolean;
 /**
@@ -56,11 +56,11 @@ declare function isDefined(param: any): param is any;
 /**
  * Checks if the input is null.
  *
- * @param param The unkownn value.
+ * @param param The unknown value.
  */
 declare function isNull(param: any): param is null;
 /**
- * Checks if a value is inbetween parameter x and y. Order of x and y deosnt matter.
+ * Checks if a value is between parameter x and y. Order of x and y deosnt matter.
  *
  * @param x The first value in the range.
  * @param y The second value in the range.
@@ -97,7 +97,7 @@ declare function isObject<Type extends Object>(param: any): param is Type;
  */
 declare function isFunction<Type extends Function>(param: any): param is Type;
 /**
- * Checks if the first parameter is equivalant to the second.
+ * Checks if the first parameter is equivalent to the second.
  *
  * @param param The first parameter.
  */
