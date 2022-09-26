@@ -1,2 +1,2 @@
-export * from './match/match-pattern.js'
+export * from './match/pattern-match.js'
 export * from './match/guards.js'
