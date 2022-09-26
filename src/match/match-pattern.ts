@@ -1,5 +1,5 @@
 import { isArray, isFunction, isObject } from './guards.js'
-import { anyFunction, Cases, Condition, ConditionFunction, ConditionObject } from '../typings.js'
+import { anyFunction, Cases, Condition, ConditionFunction, ConditionObject } from '../typings'
 
 const { keys } = Object
 
