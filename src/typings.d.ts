@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 export type Constructor<C> = new (...args: any[]) => C
 
 export type ConditionFunction = (...arg: any) => boolean
@@ -5,6 +6,6 @@ export type ConditionObject = { [key: string]: ConditionFunction | ConditionObje
 
 export type Condition = ConditionFunction | ConditionObject
 
-export type anyFunction = <T>(...arg: any) => T
+export type anyFunction = (...arg: any) => any
 
 export type Cases = ({ condition: Condition, callback: anyFunction })
