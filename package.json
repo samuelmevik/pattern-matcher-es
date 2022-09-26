@@ -1,5 +1,5 @@
 {
-  "name": "pattern-matching",
+  "name": "pattern-matcher-es",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samuelmevik/pattern-matching.git"
+    "url": "git+https://github.com/samuelmevik/pattern-matcher-es.git"
   },
   "nodemonConfig": {
     "ext": "ts",
@@ -56,9 +56,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/samuelmevik/pattern-matcher/issues"
+    "url": "https://github.com/samuelmevik/pattern-matcher-es/issues"
   },
-  "homepage": "https://github.com/samuelmevik/pattern-matcher#readme",
+  "homepage": "https://github.com/samuelmevik/pattern-matcher-es#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.19.1",
     "@babel/preset-typescript": "^7.18.6",
