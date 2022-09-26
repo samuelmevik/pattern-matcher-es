@@ -1,7 +1,7 @@
 # Pattern Matching
 A declarative pattern-matching library.
 
-License: ISC
+License: MIT
 
 ## Table of contents
   - [Introduction](#introduction)
