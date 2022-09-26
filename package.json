@@ -1,5 +1,5 @@
 {
-  "name": "1dv610-l1",
+  "name": "pattern-matcher",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samuelmevik/1DV610-L1.git"
+    "url": "git+https://github.com/samuelmevik/pattern-matcher.git"
   },
   "nodemonConfig": {
     "ext": "ts",
@@ -56,9 +56,9 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/samuelmevik/1DV610-L1/issues"
+    "url": "https://github.com/samuelmevik/pattern-matcher/issues"
   },
-  "homepage": "https://github.com/samuelmevik/1DV610-L1#readme",
+  "homepage": "https://github.com/samuelmevik/pattern-matcher#readme",
   "devDependencies": {
     "@babel/preset-env": "^7.19.1",
     "@babel/preset-typescript": "^7.18.6",
