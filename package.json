@@ -1,5 +1,5 @@
 {
-  "name": "pattern-matcher",
+  "name": "pattern-matching",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samuelmevik/pattern-matcher.git"
+    "url": "git+https://github.com/samuelmevik/pattern-matching.git"
   },
   "nodemonConfig": {
     "ext": "ts",
