@@ -13,13 +13,13 @@ There are limited ways in `Javascript` to match expressions with the exception o
 
 ## Installation
 ````
-npm install pattern-matching
+npm install pattern-matcher-es
 ````
 
 ## Usage
 ````js
 // ESM
-import { patternMatch, when, otherwise } from patternMatch
+import { patternMatch, when, otherwise } from 'pattern-matcher-es'
 
 patternMatch(data)(
     when(pattern, handler)
