@@ -33,8 +33,8 @@ patternMatch(data)(
 ````js
     const example = 'This is a string'
     const res = patternMatch(example)(
-        when(isString, () => 'First case')
-        when(isNumber, () => 'Second case')
+        when(isString, () => 'First case'),
+        when(isNumber, () => 'Second case'),
         otherWise(() => 'Third case')
     )
     console.log(res) // Will print out 'First case'
@@ -43,9 +43,9 @@ patternMatch(data)(
 ````js
     const example = 5
     const res = patternMatch(example)(
-        when(inRange(1, 1000), () => 'First case')
-        when(inRange(1, 10), () => 'Second case')
-        when(inRange(1, 5), () => 'Third case')
+        when(inRange(1, 1000), () => 'First case'),
+        when(inRange(1, 10), () => 'Second case'),
+        when(inRange(1, 5), () => 'Third case'),
         otherWise(() => 'Fourth case')
     )
     console.log(res) // Will print 'First case' since order matter.
@@ -53,25 +53,29 @@ patternMatch(data)(
 An example with an advanced object structure and arrays.
 ````js
     const example = {
-        type : 'motor-sailer',
-        length : 5,
-        depth : 2,
-
+        index: 5,
+        ob : {
+            sampleArray: ['123', '213','32132']
+        }
+    }
+    const validator = {
+        index: is(5),
+        ob: {
+            sampleArray: allOf(isString)
+        } 
     }
     const res = patternMatch(example)(
-        when(inRange(1, 1000), () => 'First case')
-        when(inRange(1, 10), () => 'Second case')
-        when(inRange(1, 5), () => 'Third case')
-        otherWise(() => 'Fourth case')
+        when(validator, () => 'First case'),
+        otherWise(() => 'Second case')
     )
-    console.log(res) // Will print 'First case' since order matter.
+    console.log(res) // Will print 'First case'
 ````
 </details>
 
 ## Before and after example
 ````js
 return patternMatch(res)(
-    when({ statusCode: inRange(200, 299) }, () => res.body)
+    when({ statusCode: inRange(200, 299) }, () => res.body),
     otherWise(() => {})
 )
 ````
