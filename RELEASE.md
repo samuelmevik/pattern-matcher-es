@@ -76,11 +76,11 @@ Jag har testat min kod med automatisk testning. Alla funktioner har tester och e
 ​
 ## Laborationsreflektion
 
-Det har varit kul och intressant att jobba med den här uppgiften. När jag började ge mig in i boken så funderade jag över: "Hur avancerat kan det vara att skriva bra variabel/funktions namn?". Jag inser att det var naivt att tro att det inte skulle vara en vetenskap i sig. 
+Det har varit kul och intressant att jobba med den här uppgiften. När jag började ge mig in i boken så funderade jag över hur avancerat kan det vara att skriva bra variabel/funktions namn. Jag inser att det var naivt att tro att det inte skulle vara något annat än en vetenskap i sig. 
 
-Jag tycker Clean code har gett mig kunskapen att skriva bättre och tydligare kod. Den viktigaste biten är att den har gett mig insikten att kunna se mina brister ur en annans kodares perspektiv och att det är väldigt lätt att vara blind. 
+Jag tycker Clean code har gett mig kunskapen att skriva bättre och tydligare kod. Den viktigaste biten är att den har gett mig insikten att kunna se mina brister ur en annan kodares perspektiv och att det är väldigt lätt att vara blind. 
 
-Den koden jag skrivit är dock inte perfekt och även jag tycker att vissa saker är otydliga. Speciellt funktionen `checkCondition` är svår förståeliga. Jag kunde dock inte komma på ett bättre namn för den.
+Den koden jag skrivit är dock inte perfekt och även jag tycker att vissa saker är otydliga. Speciellt funktionen `checkCondition` är svår förståelig. Jag kunde dock inte komma på ett bättre namn för den.
 
 Ett annat problem jag stötte på var att det paketet jag ville skapa passar bättre för `funktionell programmering`. Paketet är därmed implementerat funktionellt (Vi har pratat igenom detta och kom fram till att nästa projekt ska vara `objekt orienterat`).
 
@@ -94,4 +94,4 @@ const example = 'A string'
 ])).match()
 ````
 
-Jag är delvis nöjd med min insatts. Jag tycker komplexiteten, även om det är lite kod, är hög. 
+Jag är delvis nöjd med min insatts. Jag tycker komplexiteten, även om det är lite kod, är hög. Projektet i sig är sunt och användbart. 
