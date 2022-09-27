@@ -22,7 +22,7 @@ npm install pattern-matcher-es
 import { patternMatch, when, otherwise } from 'pattern-matcher-es'
 
 patternMatch(data)(
-    when(pattern, handler)
+    when(pattern, handler),
     otherwise(handler)
 )
 ````
