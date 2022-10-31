@@ -1,4 +1,4 @@
-import { patternMatch, isObject, when, is, allOf, isString, isNumber, includes, anyOf, isUndefined } from '../index'
+import { patternMatch, isObject, when, is, allOf, isString, isNumber, includes, anyOf, isUndefined, otherWise } from '../index'
 
 describe('patternMatch Object', () => {
   it('Should return true if value is a object', () => {
@@ -94,4 +94,15 @@ describe('Check if array includes one the value', () => {
   })
 })
 
+describe('patternMatch Object', () => {
+  it('Should return true if value is a object', () => {
+    expect(
+      patternMatch({})(when(isObject, true), otherWise(false))
+    ).toBeTruthy()
+
+    expect(
+      patternMatch({})(when({}, true))
+    ).toBeTruthy()
+  })
+})
 

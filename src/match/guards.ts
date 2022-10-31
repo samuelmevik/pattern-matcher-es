@@ -165,8 +165,14 @@ function is (param: any) {
   }
 }
 
-const { isArray } = Array
-
+/**
+ * Checks if the input is an array.
+ *
+ * @param param The unknown value.
+ */
+function isArray<Type extends Array<any>> (param: any): param is Type {
+  return instanceOf(Array)(param)
+}
 export {
   typeOf,
   isBoolean,

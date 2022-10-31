@@ -1,5 +1,5 @@
 import { isArray, isFunction, isObject } from './guards.js'
-import { anyFunction, Cases, Condition, ConditionFunction, ConditionObject } from '../typings'
+import { CallBack, Cases, Condition, ConditionFunction, ConditionObject, PrimitiveValue } from '../typings'
 
 const { keys } = Object
 
@@ -8,25 +8,58 @@ const { keys } = Object
  *
  * @param param Accepts nested objects, arrays, numbers and strings.
  */
-function patternMatch (param: any) {
-  return function (...cases: Cases[]) {
-    return cases.find(({ condition }) => checkCondition(condition, param))?.callback()
+function patternMatch<T> (param: T) {
+  return function (...cases: Cases<T>[]) {
+    const callback = cases.find(({ condition }) => isValidCondition(condition, param))?.callback
+    return isFunction(callback) ? callback(param) : callback
   }
 }
 
 /**
- * Validates a condition.
+ * Verifies that the condition is met.
  *
- * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
- * @param param Accepts nested objects, arrays, numbers and strings.
+ * @param condition Should be a condition that can be evaluated.
+ * @param param Can be anything.
  */
-function checkCondition (condition: Condition, param: any) : boolean {
+function isValidCondition<T> (condition: Condition, param: T): boolean {
   if (isObject<ConditionObject>(condition)) {
-    return keys(condition).every(key => checkCondition(condition[key], param[key]))
-  } else if (isFunction<ConditionFunction>(condition)) {
-    return condition(param)
+    return isValidObjectCondition(condition, param)
   }
-  return false
+  if (isFunction<ConditionFunction>(condition)) {
+    return isValidFunctionCondition(condition, param)
+  }
+  return isValidPrimitiveCondition(condition, param)
+}
+
+/**
+ * Loops through the keys of the object and checks if the value matches the condition.
+ *
+ * @param ob Object containing conditions.
+ * @param param Can be anything.
+ */
+function isValidObjectCondition (ob: ConditionObject, param: any): boolean {
+  return keys(ob).every(key => isValidCondition(ob[key], param[key]))
+}
+
+/**
+ * Runs a function and returns the result.
+ *
+ * @param fn A function that returns a boolean.
+ * @param param Can be anything.
+ */
+function isValidFunctionCondition (fn: ConditionFunction, param: any): boolean {
+  return fn(param)
+}
+
+/**
+ * Checks if the primitive is the same as the param.
+ *
+ * @param primitive Needs to be a string, number, null, undefined or boolean.
+ * @param param Can be anything.
+ * @returns If it is, return true. Otherwise return false.
+ */
+function isValidPrimitiveCondition (primitive: PrimitiveValue, param: any): boolean {
+  return primitive === param
 }
 
 /**
@@ -35,7 +68,7 @@ function checkCondition (condition: Condition, param: any) : boolean {
  * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  * @param callback The callback function runs if the condition is true.
  */
-function when (condition: Condition, callback: anyFunction) {
+function when<T> (condition: Condition, callback: CallBack<T> | PrimitiveValue) {
   return ({
     condition,
     callback
@@ -47,8 +80,8 @@ function when (condition: Condition, callback: anyFunction) {
  *
  * @param callback Callback runs if there is no true case.
  */
-function otherWise (callback: anyFunction) {
-  return when(() => true, callback)
+function otherWise<T> (callback: CallBack<T> | PrimitiveValue) {
+  return when(true, callback)
 }
 
 /**
@@ -56,9 +89,9 @@ function otherWise (callback: anyFunction) {
  *
  * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
-function allOf (...conditions : Condition[]) : ConditionFunction {
-  return function (args : any) {
-    return isArray(args) && conditions.every(condition => args.every(arg => checkCondition(condition, arg)))
+function allOf (...conditions: Condition[]): ConditionFunction {
+  return function (args: any) {
+    return isArray(args) && conditions.every(condition => args.every(arg => isValidCondition(condition, arg)))
   }
 }
 
@@ -67,9 +100,9 @@ function allOf (...conditions : Condition[]) : ConditionFunction {
  *
  * @param {...any} conditions Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
  */
-function anyOf (...conditions : Condition[]) : ConditionFunction {
-  return function (args : any) {
-    return isArray(args) && conditions.some(condition => args.some(arg => checkCondition(condition, arg)))
+function anyOf (...conditions: Condition[]): ConditionFunction {
+  return function (args: any) {
+    return isArray(args) && conditions.some(condition => args.some(arg => isValidCondition(condition, arg)))
   }
 }
 
@@ -78,7 +111,7 @@ function anyOf (...conditions : Condition[]) : ConditionFunction {
  *
  * @param param Can be anything.
  */
-function includes (param : any) : ConditionFunction {
+function includes (param: any): ConditionFunction {
   return function (args: any) {
     return isArray(args) && args.includes(param)
   }
