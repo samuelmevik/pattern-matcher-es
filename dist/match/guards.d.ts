@@ -102,5 +102,10 @@ declare function isFunction<Type extends Function>(param: any): param is Type;
  * @param param The first parameter.
  */
 declare function is(param: any): (params: number | string) => boolean;
-declare const isArray: (arg: any) => arg is any[];
+/**
+ * Checks if the input is an array.
+ *
+ * @param param The unknown value.
+ */
+declare function isArray<Type extends Array<any>>(param: any): param is Type;
 export { typeOf, isBoolean, isDefined, isFalsy, isNumber, isString, isTruthy, isUndefined, inRange, isRegexp, isFiniteNumber, instanceOf, isNull, isObject, isFunction, isArray, isDate, is };

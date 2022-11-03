@@ -146,6 +146,13 @@ function is(param) {
         return param === params;
     };
 }
-const { isArray } = Array;
+/**
+ * Checks if the input is an array.
+ *
+ * @param param The unknown value.
+ */
+function isArray(param) {
+    return instanceOf(Array)(param);
+}
 export { typeOf, isBoolean, isDefined, isFalsy, isNumber, isString, isTruthy, isUndefined, inRange, isRegexp, isFiniteNumber, instanceOf, isNull, isObject, isFunction, isArray, isDate, is };
 //# sourceMappingURL=guards.js.map

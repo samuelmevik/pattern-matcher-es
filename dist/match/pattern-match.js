@@ -7,23 +7,52 @@ const { keys } = Object;
  */
 function patternMatch(param) {
     return function (...cases) {
-        return cases.find(({ condition }) => checkCondition(condition, param))?.callback();
+        const callback = cases.find(({ condition }) => isValidCondition(condition, param))?.callback;
+        return isFunction(callback) ? callback(param) : callback;
     };
 }
 /**
- * Validates a condition.
+ * Verifies that the condition is met.
  *
- * @param condition Needs to be a function or a object whose end value is a function. The function needs to return a boolean.
- * @param param Accepts nested objects, arrays, numbers and strings.
+ * @param condition Should be a condition that can be evaluated.
+ * @param param Can be anything.
  */
-function checkCondition(condition, param) {
+function isValidCondition(condition, param) {
     if (isObject(condition)) {
-        return keys(condition).every(key => checkCondition(condition[key], param[key]));
+        return isValidObjectCondition(condition, param);
     }
-    else if (isFunction(condition)) {
-        return condition(param);
+    if (isFunction(condition)) {
+        return isValidFunctionCondition(condition, param);
     }
-    return false;
+    return isValidPrimitiveCondition(condition, param);
+}
+/**
+ * Loops through the keys of the object and checks if the value matches the condition.
+ *
+ * @param ob Object containing conditions.
+ * @param param Can be anything.
+ */
+function isValidObjectCondition(ob, param) {
+    return keys(ob).every(key => isValidCondition(ob[key], param[key]));
+}
+/**
+ * Runs a function and returns the result.
+ *
+ * @param fn A function that returns a boolean.
+ * @param param Can be anything.
+ */
+function isValidFunctionCondition(fn, param) {
+    return fn(param);
+}
+/**
+ * Checks if the primitive is the same as the param.
+ *
+ * @param primitive Needs to be a string, number, null, undefined or boolean.
+ * @param param Can be anything.
+ * @returns If it is, return true. Otherwise return false.
+ */
+function isValidPrimitiveCondition(primitive, param) {
+    return primitive === param;
 }
 /**
  * Checks condition.
@@ -43,7 +72,7 @@ function when(condition, callback) {
  * @param callback Callback runs if there is no true case.
  */
 function otherWise(callback) {
-    return when(() => true, callback);
+    return when(true, callback);
 }
 /**
  * Checks if all the values in the array matches the condition.
@@ -52,7 +81,7 @@ function otherWise(callback) {
  */
 function allOf(...conditions) {
     return function (args) {
-        return isArray(args) && conditions.every(condition => args.every(arg => checkCondition(condition, arg)));
+        return isArray(args) && conditions.every(condition => args.every(arg => isValidCondition(condition, arg)));
     };
 }
 /**
@@ -62,7 +91,7 @@ function allOf(...conditions) {
  */
 function anyOf(...conditions) {
     return function (args) {
-        return isArray(args) && conditions.some(condition => args.some(arg => checkCondition(condition, arg)));
+        return isArray(args) && conditions.some(condition => args.some(arg => isValidCondition(condition, arg)));
     };
 }
 /**
