@@ -11,11 +11,6 @@ License: MIT
 ## Introduction
 There are limited ways in `Javascript` to match expressions with the exception of strings. The [switch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch "An expression whose result is matched against each case clause.") is severely limiting. To avoid accidental fallthrough an explicit `break` is required in each `case` and the only comparison that it can do is `===`. This library aim is to solve these problems by providing a declarative version of the `if` and `switch` conditionals. Where the shape of the shape of the data is described by "patterns".
 
-## Installation
-````
-npm install pattern-matcher-es
-````
-
 ## Usage
 ````js
 // ESM
