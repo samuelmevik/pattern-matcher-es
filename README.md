@@ -5,7 +5,6 @@ License: MIT
 
 ## Table of contents
   - [Introduction](#introduction)
-  - [Installation](#installation)
   - [Usage](#usage)
 
 ## Introduction
